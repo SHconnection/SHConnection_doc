@@ -866,9 +866,6 @@ definitions:
       main_teacher_wid:
         type: integer
         description: 班主任工号
-      main_teacher_name:
-        type: string
-        description: 班主任姓名
       teachers_list:
         type: array
         items:
