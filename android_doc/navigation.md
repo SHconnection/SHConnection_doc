@@ -49,3 +49,8 @@
 
 > (3) 成员管理
 老师和家长可以在个人中心选择加入新的班级和退出班级
+
+##  一些草图：
+![登录和注册](https://static.dingtalk.com/media/lADPDgQ9qR0CyZfNA2DNBIA_1152_864.jpg_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22185863030%3A267532292%22%2C%22msgId%22%3A%22516944196900%22%7D&open_id=185863030)
+
+![个人中心管理](https://static.dingtalk.com/media/lADPDgQ9qR0CgArNBIDNA2A_864_1152.jpg_620x10000q90g.jpg?auth_bizType=IM&auth_bizEntity=%7B%22cid%22%3A%22185863030%3A267532292%22%2C%22msgId%22%3A%22516912456734%22%7D&open_id=185863030)
