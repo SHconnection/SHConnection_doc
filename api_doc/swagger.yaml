@@ -1,4 +1,4 @@
-wagger: "2.0"
+swagger: "2.0"
 info:
   description: "SHconnection"
   version: "1.0.0"
@@ -48,8 +48,6 @@ paths:
           schema:
             type: object
             properties:
-              class_id:
-                type: integer
               classes_id:
                 type: array
                 items:
@@ -58,7 +56,43 @@ paths:
               token:
                 type: string
                 description: Token
-
+        400:
+          description:  密码错误
+          
+  /teacher/addclass/{classid}/:
+    post:
+      tags:
+      - teacher
+      summary: 老师注册并加入班级
+      parameters:
+      - in: path
+        name: classid
+        type: integer
+        description: class id
+        required: true
+      - in: body
+        name: postbody
+        schema:
+          type: object
+          properties:
+            wid:
+              type: integer
+              description: 工号
+            password:
+              type: string
+              description: 密码
+            name:
+              type: string
+              description: 姓名
+            subject:
+              type: string
+              description: 科目
+      
+      responses:
+        200:  
+          description: ok
+          
+  
   /teacher/signup/:
     post:
       deprecated: true
@@ -313,16 +347,16 @@ paths:
 
 
 
-  /parent/signup/{classid}/:
+  /parent/addclass/{classid}/:
     post:
       tags:
       - parent
-      summary: 家长扫描二维码初始化
+      summary: 家长注册并加入班级
       parameters:
       - in: path
         name: classid
         type: integer
-        description: 二维码中的class id
+        description: class id
         required: true
       - in: body
         name: postbody
@@ -332,6 +366,9 @@ paths:
             sid:
               type: integer
               description: 学号
+            password:
+              type: string
+              description: 密码
             name: 
               type: string
               description: 姓名
@@ -339,19 +376,9 @@ paths:
       responses:
         200:
           description: ok
-          schema:
-            type: object
-            properties:
-              class_id:
-                type: integer
-                description: 班级号
-              token:
-                type: string
-                description: Token
-
-          
         400: 
           description: 信息错误
+      
       
   /parent/signin/:
     post:
@@ -783,26 +810,6 @@ paths:
               class_id:
                 type: integer
   
-  /init/class/{classid}/:
-    get:
-      tags:
-      - init
-      summary: 获取班级信息，用于登录校验
-      parameters:
-      - in: path
-        name: classid
-        description: 班级id
-        type: integer
-        required: true
-      responses:
-        200:
-          description: ok
-          schema:
-            type: object
-            $ref: '#/definitions/ClassPost'
-        
-        404:
-          description: not found
       
     
 definitions:
