@@ -864,8 +864,10 @@ definitions:
     description: Class Init Post Body
     properties:
       main_teacher_wid:
-        type: integer
+        type: string
         description: 班主任工号
+      class_name:
+        type: string
       teachers_list:
         type: array
         items:
@@ -882,7 +884,7 @@ definitions:
       name:
         type: string
       wid:
-        type: integer
+        type: string
         description: 工号
   
   ChildInit:
@@ -892,7 +894,7 @@ definitions:
       name:
         type: string
       sid:
-        type: integer
+        type: string
         description: 学号
 
 
