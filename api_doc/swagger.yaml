@@ -223,6 +223,29 @@ paths:
           description: "token验证错误或过期"
 
 
+  /mainteacher/signup/:
+    post:
+      tags:
+      - "teacher"
+      summary: 班主任注册
+      parameters:
+      - in: body
+        name: body
+        description: 班主任注册
+        required: true
+        schema:
+          type: object
+          properties:
+            wid:
+              type: string
+            password:
+              type: string
+        
+      responses:
+        201:
+          description: ok
+            
+              
 
   /evaluation/teacher/all/:
     get:
