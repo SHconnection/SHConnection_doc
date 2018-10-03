@@ -1,4 +1,4 @@
-wagger: "2.0"
+swagger: "2.0"
 info:
   description: "SHconnection"
   version: "1.0.0"
