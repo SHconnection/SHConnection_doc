@@ -58,3 +58,5 @@ apache 解析xml的程序不太友好 因为Android 使用的jre中有部分类�
 - 后端返回的数据中 CLASS_ID 客户端用来储存已经完成创建地班级id  CLASSED_IDS 表示老师加入地班级列表，是一个被持久化了的表名
 CLASS_ID   储存在客户端地手机上地时候是没有加密的 只有在二维码中才可以加密
 - 并且持久化不会变化的Token 它的key是LOGIN_TOKEN    
+
+- 如果是老师登录完成的话，会选取最后一个class_id作为当前地classid
