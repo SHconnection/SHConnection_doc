@@ -206,11 +206,6 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - in: "query"
-        name: "tid"
-        description: "老师ID"
-        required: true
-        type: "string"
       - in: "header"
         name: "token"
         description: "验证token"
