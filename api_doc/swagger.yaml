@@ -449,6 +449,9 @@ paths:
               token:
                 type: string
                 description: token
+              name:
+                type: string
+                description: name
         400:
           description: 信息错误
     
@@ -546,11 +549,6 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - in: "query"
-        name: "pid"
-        description: "家长ID"
-        required: true
-        type: "string"
       - in: "header"
         name: "token"
         description: "验证token"
