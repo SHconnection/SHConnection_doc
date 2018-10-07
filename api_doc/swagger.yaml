@@ -56,6 +56,8 @@ paths:
               token:
                 type: string
                 description: token
+              name:
+                type: string
         400:
           description:  密码错误
           
@@ -239,6 +241,8 @@ paths:
             wid:
               type: string
             password:
+              type: string
+            name:
               type: string
         
       responses:
@@ -661,7 +665,7 @@ paths:
           description: "班主任token验证错误"
 
 
-  /feeds/{pagenum}/:
+  /feeds/{pagenum}/class/{class_id}/:
     get:
       tags:
       - feed
@@ -671,6 +675,11 @@ paths:
         name: pagenum
         type: integer
         description: 页码数
+        required: true
+      - in: path
+        name: class_id
+        type: integer
+        description: 班级id
         required: true
       responses:
         200:
