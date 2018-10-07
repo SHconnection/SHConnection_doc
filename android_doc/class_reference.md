@@ -10,12 +10,16 @@
 
 - 在老师登录完成之后会在数据库中持久化一个老师的加入的班级的list
 - 并且将当前老师所在的id 和 家长所在地id 保存在CLASS_ID	中
-如果点击创建班级会导引到老师创建班级的页面中去。
+会在本地持久化 班级id 学号/教室号 id  Token 用户类型 ：是老师还是学生
 
- # ScanActivity
+ # ScanActivity(废弃))
  如果需要扫描功能地类都需要路由到这里
  扫描完成的intent 中会携带加密过了的班级的class_id
 
+# JoinClassActivity
+加入一个班级
+在这个班级的老师需要输入相同地用户名和工号才可以加入
+同样学生也需要输入相同地用户名和学号
 # DatabaseHelper 
 使用Kotlin Anko库完成的数据库操作 用于持久化一些数据结构
 [Anko Sqlite](https://github.com/Kotlin/anko/wiki/Anko-SQLite#accessing-database)
@@ -59,4 +63,5 @@ apache 解析xml的程序不太友好 因为Android 使用的jre中有部分类�
 CLASS_ID   储存在客户端地手机上地时候是没有加密的 只有在二维码中才可以加密
 - 并且持久化不会变化的Token 它的key是LOGIN_TOKEN    
 
-- 如果是老师登录完成的话，会选取最后一个class_id作为当前地classid
+- 如果是老师登录完成的话，会选取最后一个class_id作为当前地classid，家长登录完成也会有一个id 作为当前地class_id
+之后通过这个class_id判断老师是否登录成功
