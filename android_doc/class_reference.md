@@ -10,7 +10,12 @@
 
 - 在老师登录完成之后会在数据库中持久化一个老师的加入的班级的list
 - 并且将当前老师所在的id 和 家长所在地id 保存在CLASS_ID	中
-会在本地持久化 班级id 学号/教室号 id  Token 用户类型 ：是老师还是学生
+会在本地持久化 
+班级id 
+学号/教师工号 id  
+Token 
+用户类型 ：是老师还是学生
+教师或者是学生名字
 
  # ScanActivity(废弃))
  如果需要扫描功能地类都需要路由到这里
@@ -20,6 +25,11 @@
 加入一个班级
 在这个班级的老师需要输入相同地用户名和工号才可以加入
 同样学生也需要输入相同地用户名和学号
+
+# ViewPictureActivity
+发送一条新的动态    
+有两种类型的动态 一种是通知一种是消息
+可以预览图片
 # DatabaseHelper 
 使用Kotlin Anko库完成的数据库操作 用于持久化一些数据结构
 [Anko Sqlite](https://github.com/Kotlin/anko/wiki/Anko-SQLite#accessing-database)
