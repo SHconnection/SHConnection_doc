@@ -13,7 +13,7 @@ student.xlxs
 密码：201
 姓名：null(存储的数值为null)
 
-二维码信息：![二维码](./classid_qrcode)
+二维码信息：![二维码](https://github.com/SHconnection/SHConnection_doc/blob/master/android_doc/classid_qrcode.jpg)
 
 class_id = 28
 已经注册的家长信息：
@@ -23,7 +23,7 @@ class_id = 28
 
 姓名：普京
 学号：205
-密码：205
+密码：205()
 
 # 当前进度情况
 
