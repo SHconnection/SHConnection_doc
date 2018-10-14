@@ -902,8 +902,6 @@ definitions:
     properties:
       classId:
         type: integer
-      teacherId:
-        type: integer
       type:
         type: string
         description: 信息类型, 包括"作业"、"通知"、"分享"
