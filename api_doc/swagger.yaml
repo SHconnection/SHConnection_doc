@@ -316,8 +316,69 @@ paths:
             $ref: '#/definitions/Evaluation'
         403:
           description: "token验证错误"
-
-
+  
+  /evaluation/parent/view/:
+    get:
+      tags: 
+      - "evaluation"
+      summary: 查看评价时，家长看到的list 
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "page"
+        description: "分页页数"
+        type: "integer"
+        required: true
+      - in: "header"
+        name: "token"
+        description: "token"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "成功"
+          schema:
+            $ref: '#/definitions/ParentView'
+        403:
+          description: "token验证错误"
+          
+          
+  /evaluation/teacher/view/:
+    get:
+      tags: 
+      - "evaluation"
+      summary: 查看评价时，老师看到的list 
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "cid"
+        description: "班级ID"
+        required: true
+        type: "string"
+      - in: "query"
+        name: "page"
+        description: "分页页数"
+        type: "integer"
+        required: true
+      - in: "header"
+        name: "token"
+        description: "token"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "成功"
+          schema:
+            $ref: '#/definitions/TeacherView'
+        403:
+          description: "token验证错误"
+  
   /evaluation/teacher/:
     post:
       tags:
@@ -1289,4 +1350,63 @@ definitions:
       childid:
         type: "integer"
         description: "孩子的ID"
+        
+        
+  TeacherIdName:
+    type: "object"
+    required:
+    - 'name'
+    - 'tid'
+    properties:
+      tid:
+        type: "string"
+      name: 
+        type: "string"
+
+  ParentIdName:
+    type: "object"
+    required:
+    - 'name'
+    - 'pid'
+    properties:
+      pid:
+        type: "string"
+      name:
+        type: "string"
+        
+        
+  TeacherView:
+    type: "object"
+    required:
+    - "teachers"
+    - "parents"
+    properties:
+      teachers:
+        type: "array"
+        xml:
+          name: "teachers"
+          wrapped: true
+        items:
+          $ref: "#/definitions/TeacherIdName"
+      parents:
+        type: "array"
+        xml:
+          name: "parents"
+          wrapped: true
+        items:
+          $ref: "#/definitions/ParentIdName"
+          
+          
+  ParentView:
+    type: "object"
+    required:
+    - "teachers"
+    properties:
+      teachers:
+        type: "array"
+        xml:
+          name: "teachers"
+          wrapped: true
+        items:
+          $ref: "#/definitions/TeacherIdName"
 
