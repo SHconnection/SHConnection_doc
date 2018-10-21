@@ -1597,7 +1597,7 @@ definitions:
       evals:
         type: "array"
         items:
-          $ref: "#/definitions/TEval"
+          $ref: "#/definitions/CEval"
       child:
         type: "string"  
         
