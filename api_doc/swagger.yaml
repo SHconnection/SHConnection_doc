@@ -378,7 +378,9 @@ paths:
             $ref: '#/definitions/TeacherView'
         403:
           description: "token验证错误"
-  
+          
+          
+
   /evaluation/teacher/:
     post:
       tags:
@@ -448,6 +450,142 @@ paths:
         403:
           description: "token验证错误"
 
+
+  /evaluation/teacher/teacher/:
+    get:
+      tags: 
+      - "evaluation"
+      summary: 老师端点击一个老师看到的是这个老师对班级所有孩子的评价
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "cid"
+        description: "班级ID"
+        required: true
+        type: "string"
+      - in: "query"
+        name: "page"
+        description: "分页页数"
+        type: "integer"
+        required: true
+      - in: "query"
+        name: "tid"
+        description: "老师ID"
+        required: true
+        type: "string"
+      - in: "header"
+        name: "token"
+        description: "token"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "成功"
+          schema:
+            $ref: '#/definitions/TEvals'
+        403:
+          description: "token验证错误"
+          
+          
+  /evaluation/teacher/parent/:
+    get:
+      tags: 
+      - "evaluation"
+      summary: 老师端点击一个家长看到的是全部老师对这个家长的孩子的评论
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "pid"
+        description: "家长ID"
+        required: true
+        type: "string"
+      - in: "query"
+        name: "page"
+        description: "分页页数"
+        type: "integer"
+        required: true
+      - in: "header"
+        name: "token"
+        description: "token"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "成功"
+          schema:
+            $ref: '#/definitions/CEvals'
+        403:
+          description: "token验证错误"
+          
+          
+  
+  /evaluation/parent/teacher/:
+    get:
+      tags: 
+      - "evaluation"
+      summary: 家长端点击一个老师看到的是这个老师对这个家长的孩子的评论
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "tid"
+        description: "老师ID"
+        required: true
+        type: "string"
+      - in: "query"
+        name: "page"
+        description: "分页页数"
+        type: "integer"
+        required: true
+      - in: "header"
+        name: "token"
+        description: "token"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "成功"
+          schema:
+            $ref: '#/definitions/PTEvals'
+        403:
+          description: "token验证错误"
+          
+          
+  /evaluation/parent/parent/:
+    get:
+      tags: 
+      - "evaluation"
+      summary: 家长端点击我看到的是这个家长对自己的孩子的评论
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "page"
+        description: "分页页数"
+        type: "integer"
+        required: true
+      - in: "header"
+        name: "token"
+        description: "token"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "成功"
+          schema:
+            $ref: '#/definitions/PPEvals'
+        403:
+          description: "token验证错误"
 
 
   /parent/addclass/{classid}/:
@@ -1409,4 +1547,102 @@ definitions:
           wrapped: true
         items:
           $ref: "#/definitions/TeacherIdName"
-
+          
+          
+  TEval:
+    type: "object" 
+    required:
+    - "child"
+    - "eval" 
+    properties:
+      child:
+        type: "string" 
+      eval: 
+        type: "string" 
+        
+  
+  TEvals:
+    type: "object"
+    required:
+    - "teacher"
+    - "evals"
+    properties:
+      evals:
+        type: "array"
+        items:
+          $ref: "#/definitions/TEval"
+      teacher:
+        type: "string"  
+        
+        
+  
+  CEval:
+    type: "object" 
+    required:
+    - "teacher"
+    - "eval" 
+    properties:
+      teacher:
+        type: "string" 
+      eval: 
+        type: "string" 
+        
+  
+  CEvals:
+    type: "object"
+    required:
+    - "child"
+    - "evals"
+    properties:
+      evals:
+        type: "array"
+        items:
+          $ref: "#/definitions/TEval"
+      child:
+        type: "string"  
+        
+        
+    
+  PTEval:
+    type: "object" 
+    required:
+    - "eval" 
+    properties:
+      eval: 
+        type: "string" 
+        
+        
+  PTEvals:
+    type: "object"
+    required:
+    - "teacher"
+    - "evals"
+    properties:
+      evals:
+        type: "array"
+        items:
+          $ref: "#/definitions/PTEval"
+      teacher:
+        type: "string"  
+        
+        
+        
+        
+  PPEvals:
+    type: "object"
+    required:
+    - "child"
+    - "evals"
+    properties:
+      evals:
+        type: "array"
+        items:
+          $ref: "#/definitions/PTEval"
+      teacher:
+        type: "string"  
+        
+  
+  
+        
+    
+   
