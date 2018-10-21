@@ -1638,7 +1638,7 @@ definitions:
         type: "array"
         items:
           $ref: "#/definitions/PTEval"
-      teacher:
+      child:
         type: "string"  
         
   
