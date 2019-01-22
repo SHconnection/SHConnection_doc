@@ -890,9 +890,67 @@ paths:
               feeds:
                 type: object
                 $ref: '#/definitions/Feeds'
+  
+  
+  /feeds/{feedid}/readedpeople/:
+    get:
+      tags:
+      - feed
+      description: 返回已读过的人的列表
+      parameters:
+      - in: path
+        name: feedid
+        type: integer
+        description: feed id
+        required: true
+      - in: header
+        name: token
+        type: string
+        description: token
+        required: true
+      responses:
+        200:
+          description: ok
+          schema:
+            type: object
+            properties:
+              readed:
+                type: array
+                items:
+                  type: string
+                  description: 已读人name列表
 
+  /feeds/{feedid}/unreadedpeople/:
+    get:
+      tags:
+      - feed
+      description: 返回已读过的人的列表
+      parameters:
+      - in: path
+        name: feedid
+        type: integer
+        description: feed id
+        required: true
+      - in: header
+        name: token
+        type: string
+        description: token
+        required: true
+      responses:
+        200:
+          description: ok
+          schema:
+            type: object
+            properties:
+              unreaded:
+                type: array
+                items:
+                  type: string
+                  description: 未读人name列表                      
+      
   /feed/{feedid}/:
     get:
+      deprecated: true
       tags:
       - feed
       summary: 获取Feed详细信息
@@ -937,27 +995,6 @@ paths:
         200:
           description: ok
 
-  /feed/{feedid}/like/:
-    post:
-      tags:
-      - feed
-      summary: like某个feed
-      parameters:
-      - in: path
-        name: feedid
-        type: integer
-        description: feed id
-        required: true
-      - in: header
-        name: token
-        type: string
-        description: token
-        required: true
-      responses:
-        200:
-          description: ok
-        403:
-          description: forbidden already liked
 
   /feed/:
     post:
@@ -1003,33 +1040,6 @@ paths:
       responses:
         201:
           description: created
-
-  /feed/{feedid}/comments/:
-    get:
-      tags:
-      - feed
-      summary: 获取某个feed的评论
-      parameters:
-      - in: path
-        name: feedid
-        type: string
-        description: feed id
-        required: true
-      - in: header
-        name: token
-        type: string
-        description: token
-        required: true
-
-      responses:
-        200:
-          description: ok
-          schema:
-            type: object
-            properties:
-              comments:
-                type: object
-                $ref: '#/definitions/FeedComments'
 
   /init/class/:
     post:
@@ -1103,7 +1113,7 @@ definitions:
         type: integer
       type:
         type: string
-        description: 信息类型, 包括"作业"、"通知"、"分享"
+        description: 信息类型, 包括"消息"和"动态"
       content:
         type: string
         description: 内容
@@ -1119,35 +1129,58 @@ definitions:
     properties:
       id:
         type: integer
-      classId:
-        type: integer
-        description: 课堂id
       teacherSimpleInfo:
         type: object
         $ref: '#/definitions/TeacherSimpleInfo'
+      time:
+        type: integer
+        description: YYYYMMDDHHMM
       type:
         type: string
-        description: 信息类型, 包括"作业"、"通知"、"分享"
+        description: 信息类型, 包括"消息"和"动态"
+      readed:
+        type: boolean
+        description:  用户是否已经读过.
+      read_status:
+        type: string
+        description: 31/40
       content:
         type: string
         description: 内容
-      likes:
-        type: integer
-        description: like的人数
-      liked:
-        type: boolean
-        description: 是否已喜欢
       picture_urls:
         type: array
         items:
           type: string
           description: 图片URL
+      commentnum:
+        type: integer
+      comments:
+        type: array
+        items: 
+          type: object
+          $ref: '#/definitions/FeedComment'
 
 
   Feeds:
     type: array
     items:
       $ref: '#/definitions/Feed'
+
+      
+
+  FeedComment:
+    type: object
+    properties:
+      content:
+        type: string
+      username:
+        type: string
+
+  FeedComments:
+    type: array
+    items:
+      $ref: '#/definitions/FeedComment'
+
 
   ParentSimpleInfo:
     type: object
@@ -1169,7 +1202,7 @@ definitions:
     type: object
     description: 教师简单信息
     properties:
-      id:
+      wid:
         type: integer
       name:
         type: string
@@ -1197,31 +1230,6 @@ definitions:
       avater:
         type: string
         description: 头像地址
-      
-
-  FeedComment:
-    type: object
-    properties:
-      id:
-        type: integer
-      feedId:
-        type: integer
-      content:
-        type: string
-      like:
-        type: integer
-        description: 喜欢的人数
-      user_simple_info:
-        type: object
-        $ref: '#/definitions/UserSimpleInfo'
-  
-
-          
-
-  FeedComments:
-    type: array
-    items:
-      $ref: '#/definitions/FeedComment'
 
 
 
