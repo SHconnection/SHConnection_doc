@@ -483,8 +483,17 @@ paths:
         200:
           description: "获取成功"
           schema:
-            $ref: '#/definitions/UserFormatStructList'
-
+            type: object
+            properties:
+              teachers:
+                type: array
+                items:
+                  $ref: '#/definitions/UserFormatStructList'
+              parents:
+                type: array
+                items:
+                  $ref: '#/definitions/UserFormatStructList'
+            
 
   /class/child/:
     post:
@@ -883,7 +892,7 @@ definitions:
     - "name"
     - "score"
     properties:
-      name:
+      key:
         type: "string"
         description: "评分项"
       score:
