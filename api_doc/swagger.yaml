@@ -193,7 +193,7 @@ paths:
         201:
           description: ok
 
-  /evalution/view/teacher/:
+  /evaluation/view/teacher/:
     get:
       tags:
       - "evaluation"
@@ -212,7 +212,32 @@ paths:
         200:
           description: "成功"
           schema:
-            $ref: '#/definitions/UserFormatStruct'
+            type: array
+            items:
+              $ref: '#/definitions/Evaluation'
+  
+  /evaluation/view/parent/:
+    get:
+      tags:
+      - "evaluation"
+      summary: 家长查看评价列表。获取的为该家长的孩子获得的所有老师的评价
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "header"
+        name: "token"
+        description: "token 从token 中获取用户类型和id"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "成功"
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Evaluation'
 
   /evaluation/teacher/:
     post:
@@ -1081,3 +1106,8 @@ definitions:
     
     
     
+    
+  
+        
+    
+   
