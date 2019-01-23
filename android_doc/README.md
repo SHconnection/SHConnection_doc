@@ -9,22 +9,18 @@ student.xlxs
 是两个表 
 
 创建成功的班主任信息：
-- 工号：201
-- 密码：201
-- 姓名：null(存储的数值为null)
+- 工号：001
+- 密码：001
+- 姓名：许甜橙
 
 二维码信息：![二维码](https://github.com/SHconnection/SHConnection_doc/blob/master/android_doc/classid_qrcode.jpg)
 
-class_id = 28<br>
 已经注册的家长信息：
 
 - 姓名：唐相儒 
-<br>学号：204（这个家长暂时没有加入这个班级）
-<br>密码：205
+<br>学号：204
+<br>密码：204
 
-- 姓名：普京
-<br>学号：205
-<br>密码：205
 
 # 当前进度情况
 
